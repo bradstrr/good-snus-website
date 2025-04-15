@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        h2 { color: #444; }
+        .product { border-bottom: 1px solid #ddd; padding: 10px 0; }
+        .summary { font-weight: bold; margin-top: 20px; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+    <h2>Thanks for your order, {{ name }}!</h2>
+    <p>📦 <strong>Order Number:</strong> {{ order_number }}</p>
+
+    {% for item in cart_items %}
+        <div class="product">
+            <strong>{{ item.name }}</strong><br>
+            Quantity: {{ item.quantity }}<br>
+            Price: £{{ "%.2f"|format(item.price) }}<br>
+            Total: £{{ "%.2f"|format(item.total) }}
+        </div>
+    {% endfor %}
+
+    <div class="summary">
+        Total Paid: £{{ "%.2f"|format(total) }}
+    </div>
+
+    <p>📮 Your items will be shipped to:</p>
+    <p>{{ address }}</p>
+
+    <p>Thank you for shopping with The Good Snus!</p>
+</body>
+</html>
+
